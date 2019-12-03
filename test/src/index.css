@@ -1,0 +1,10 @@
+
+html, body, :global(#root, *) {
+  height: 100%;
+  list-style: none;
+}
+
+:global(.header.ant-layout-header){
+  background: #31C3A6;
+  color: #fff;
+}
