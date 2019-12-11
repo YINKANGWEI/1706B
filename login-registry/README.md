@@ -1,29 +1,58 @@
-# login-registry
+#### 接口根地址
 
-## Project setup
-```
-npm install
-```
+baseUrl: http://localhost:169.254.156.144:7001
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+统一格式: {
+    code: 1,
+    msg: 提示消息,
+    data: 返回数据
+}
 
-### Compiles and minifies for production
-```
-npm run build
-```
+状态码: 
+200 成功 401 无权限 404 页面找不到 500 服务器报错
 
-### Run your tests
-```
-npm run test
-```
+---------
+#### 1.
+#### 接口描述
 
-### Lints and fixes files
+获取身份信息
+
+#### 接口地址
+
 ```
-npm run lint
+/identity
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+#### 接口请求方式
+
+GET
+
+#### 接口传参
+
+```
+{
+    "code":1,
+    "msg":"成功",
+    "data":[
+        {"id": 学生身份id, "title":"学生"},
+        {"id":"老师身份id", "title":"老师"}
+    ]
+}
+```
+
+#### 接口返回值
+
+```
+{
+    msg: "成功",
+    code: 1,
+    data: [
+        {
+          id: "身份id",
+          title: "身份名称"
+      } 
+   ]
+}
+```
+
+----------

@@ -1,12 +1,13 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import { viewList } from "./view.List"
 
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
-    redirect: '/index'
+    redirect: '/index/index'
   }, {
     path: '/index',
     name: 'index',
@@ -19,7 +20,16 @@ const routes = [
         next("/login")
       }
     },
-    component: () => import('../views/Index/index.vue')
+    component: () => import('../views/Index/index.vue'),
+    children: [{
+      path: "index",
+      component: () => import('../views/Index/components/index.vue')
+    }, {
+      path: "/index",
+      redirect: "/index/index"
+    },
+    ...viewList
+    ]
   }, {
     path: '/login',
     name: 'login',

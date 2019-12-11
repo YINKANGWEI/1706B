@@ -52,7 +52,6 @@ export default {
       this.$refs["myform"].validate(res => {
         if (res) {
           login(this.userInfo).then(data => {
-            console.log(data.data);
             if (data.data.code) {
               //登录
               window.localStorage.setItem("token",data.data.data.token)
