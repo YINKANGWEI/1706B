@@ -57,7 +57,7 @@ export default {
               window.localStorage.setItem("token",data.data.data.token)
               this.$router.push("/index")
             } else {
-              alert(data.data.msg);
+              this.$message.error(data.data.msg);
             }
           });
           return;

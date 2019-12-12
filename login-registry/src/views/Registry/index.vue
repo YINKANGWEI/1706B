@@ -86,11 +86,13 @@ export default {
   methods: {
     submit() {
       this.$refs["myform"].validate(res => {
-        console.log("res...", res);
         if (res) {
           sendIdentity(this.userInfo).then(data => {
             if (data.data.code) {
-              alert(data.data.msg);
+              this.$message({
+                message: data.data.msg,
+                type: "success"
+              });
               this.$router.push("/login");
             }
           })

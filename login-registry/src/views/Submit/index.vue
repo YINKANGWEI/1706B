@@ -7,7 +7,7 @@
       <el-input v-model="skill" type="number"></el-input>
     </el-form-item>
     <el-form-item label="选择时间">
-      <el-date-picker v-model="value1" type="date" placeholder="选择日期"></el-date-picker>
+      <el-date-picker v-model="date" type="date" placeholder="选择日期"></el-date-picker>
     </el-form-item>
     <el-form-item>
       <el-button @click="submit">提交</el-button>
@@ -16,23 +16,34 @@
 </template>
 
 <script>
+import { getExam } from "../../api/exam";
 export default {
   data() {
     return {
+      theory: "",
+      skill: "",
+      date: new Date().toLocaleDateString(),
       pickerOptions: {
         disabledDate(time) {
           return time.getTime() > Date.now();
         }
-      },
-      theory: "",
-      skill: "",
-      value1: ""
-    };
+      }
+    }
   },
   methods: {
     submit() {
-      let date = this.value1.toLocaleDateString();
-      console.log(this.theory, this.skill, date);
+      let date = new Date(this.date).toLocaleDateString()
+      getExam({
+        theory: this.theory,
+        skill: this.skill,
+        date
+      }).then(res => {
+        this.$message({
+          message: "提交成绩成功",
+          type: "success"
+        })
+        this.$router.push("/index/show")
+      });
     }
   }
 };

@@ -5,6 +5,7 @@
         <img :src="require('../../assets/timg.jpg')" alt />
       </div>
       <el-menu class="el-menu">
+        <el-menu-item> <router-link to="/index/index">首页</router-link> </el-menu-item>
         <el-menu-item v-for="(item, index) in viewList" :key="index">
           <router-link :to="item.name">{{item.title}}</router-link></el-menu-item>
       </el-menu>
@@ -33,10 +34,8 @@ export default {
         this.userName = res.data.userName;
         this.userTitle = res.data.userTitle;
         this.viewList = res.data.viewList;
-        console.log(res.data);
       })
-      .catch(error => {
-        alert(error.response.data.msg);
+      .catch(() => {
       });
   }
 };

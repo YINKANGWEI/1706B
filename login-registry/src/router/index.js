@@ -7,7 +7,7 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    redirect: '/index/index'
+    redirect: '/index/home'
   }, {
     path: '/index',
     name: 'index',
@@ -22,11 +22,14 @@ const routes = [
     },
     component: () => import('../views/Index/index.vue'),
     children: [{
+      path: "home",
+      component: () => import('../views/Index/components/index.vue')
+    },{
       path: "index",
       component: () => import('../views/Index/components/index.vue')
     }, {
       path: "/index",
-      redirect: "/index/index"
+      redirect: "/index/home"
     },
     ...viewList
     ]
